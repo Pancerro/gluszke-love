@@ -1,0 +1,35 @@
+<div>
+    <h1 mat-dialog-title>No dodaj mnie!</h1>
+    <div mat-dialog-content>
+        <form #cardForm="ngForm">
+            <div ngModelGroup="card">
+                <mat-form-field>
+                    <p><input matInput type="text" required name="title" ngModel></p>
+                    <mat-placeholder>Tytuł</mat-placeholder>
+                    <mat-error>Tytuł musi być Martusio</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <p><input matInput type="text" required name="description" ngModel></p>
+                    <mat-placeholder>Opis</mat-placeholder>
+                    <mat-error>Opis musi być Martusio</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <textarea matInput name="longDescription" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="10" ngModel></textarea>
+                    <mat-placeholder>Długi opis</mat-placeholder>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Kategoria</mat-label>
+                    <mat-select name="category" ngModel>
+                        <mat-option value="none">Brak kategorii aaa</mat-option>
+                        <mat-option *ngFor="let category of categoryTable" [style.backgroundColor]="category.color" [style.color]="category.textColor" [value]="category">{{category.nameCategory}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <p><input type="file" (change)="showPreview($event)" name="file" ngModel></p>
+            </div>
+        </form>
+    </div>
+    <div class="btn" mat-dialog-actions>
+        <button mat-flat-button color="accent" [mat-dialog-close]="undefined">Anuluj!</button>
+        <button mat-flat-button color="accent" [mat-dialog-close]="cardForm" [disabled]="cardForm.invalid" cdkFocusInitial>Save</button>
+    </div>
+</div>

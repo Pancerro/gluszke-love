@@ -1,0 +1,195 @@
+.container {
+  height: 100%;
+  overflow: hidden;
+}
+
+.videoDiv {
+    width: 50%;   /*or whatever % you prefer*/
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}
+
+@media only screen and (max-width: 1000px) {
+  .videoDiv {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .videoDiv {
+    padding-top: 200px;
+    width: 90%;
+  }
+}
+
+.btnNext {
+    width: 100%;
+    height: 50px;
+    margin-top: -10px;
+}
+
+.background {
+    background-color: pink;
+}
+
+.logo {
+    width: 90%;
+    height: 90%;
+}
+
+.under-video {
+    width: 50%;
+    height: 50%;
+    margin-bottom: 10px;
+}
+
+.cap-1 {
+    width: 5%;
+    height: 5%;
+    top: 0;
+    left: 0%;
+    position: absolute;
+}
+
+.heart-1 {
+    width: 5%;
+    height: 5%;
+    top: 0;
+    left: 5%;
+    position: absolute;
+}
+
+.balon-1 {
+    width: 5%;
+    height: 5%;
+    top: 0;
+    left: 9%;
+    position: absolute;
+}
+
+.cap-2 {
+    width: 5%;
+    height: 5%;
+    top: 0;
+    right: 0;
+    position: absolute;
+}
+
+.heart-2 {
+    width: 5%;
+    height: 5%;
+    top: 0;
+    right: 5%;
+    position: absolute;
+}
+
+.balon-2 {
+    width: 5%;
+    height: 5%;
+    top: 0;
+    right: 9%;
+    position: absolute;
+}
+
+.cap-3 {
+    width: 5%;
+    height: 5%;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+}
+
+.heart-3 {
+    width: 5%;
+    height: 5%;
+    bottom: 0;
+    right: 5%;
+    position: absolute;
+}
+
+.balon-3 {
+    width: 5%;
+    height: 5%;
+    bottom: 0;
+    right: 9%;
+    position: absolute;
+}
+
+.cap-4 {
+    width: 5%;
+    height: 5%;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+}
+
+.heart-4 {
+    width: 5%;
+    height: 5%;
+    bottom: 0;
+    left: 5%;
+    position: absolute;
+}
+
+.balon-4 {
+    width: 5%;
+    height: 5%;
+    bottom: 0;
+    left: 9%;
+    position: absolute;
+}
+
+.sheldon {
+    top: 0;
+    left: 0;
+    position: absolute;
+    opacity: 0;
+}
+
+.breaking-bad {
+    top: 0;
+    right: 0;
+    position: absolute;
+    opacity: 0;
+}
+
+.rick-and-morty {
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    opacity: 0;
+}
+
+.grinch {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    opacity: 0;
+}
+
+.fireworks {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+    opacity: 0;
+}
+
+img {
+    width: 30%;
+    height: 30%;
+}
+
+.animated {
+    width: 300px;
+    height: 480px;
+}
+
+.center {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    display: none;
+}

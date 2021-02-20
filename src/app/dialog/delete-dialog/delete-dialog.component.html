@@ -1,0 +1,10 @@
+<div>
+    <h1 mat-dialog-title>Czy napewno chcesz to usunąc?</h1>
+    <div mat-dialog-content>
+        <p>Z góry Cie ostrzegam! jak usuniesz to bedzie trza dodac jeszcze raz!</p>
+    </div>
+    <div class="btn" mat-dialog-actions>
+        <button mat-flat-button color="accent" [mat-dialog-close]="undefined">Anuluj!</button>
+        <button mat-flat-button color="accent" [mat-dialog-close]="true" cdkFocusInitial>USUWAJ</button>
+    </div>
+</div>

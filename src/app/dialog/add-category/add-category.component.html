@@ -1,0 +1,26 @@
+<div>
+    <h1 mat-dialog-title>Dodasz nowa kategorie Martusiu?</h1>
+    <div mat-dialog-content>
+        <form #categoryForm="ngForm">
+            <div ngModelGroup="category">
+                <mat-form-field>
+                    <p><input matInput type="text" required name="nameCategory" ngModel></p>
+                    <mat-placeholder>Nazwa kategori</mat-placeholder>
+                    <mat-error>Nazwa kategori musi być Martusio</mat-error>
+                </mat-form-field>
+                <p>Wybierzemy nowy kolor tła?</p>
+                <p><input style="width: 100%;" type="color" required name="color" ngModel></p>
+                <p>Wybierzemy nowy kolor czcionki?</p>
+                <p><input style="width: 100%;" type="color" required name="textColor" ngModel></p>
+                <p>Wybierzemy nowy kolor gwiazdki?</p>
+                <p><input style="width: 100%;" type="color" required name="colorStar" ngModel></p>
+                <p>Wybierzemy nowy kolor tla gwiazdki?!?</p>
+                <p><input style="width: 100%;" type="color" required name="colorStarBackground" ngModel></p>
+            </div>
+        </form>
+    </div>
+    <div class="btn" mat-dialog-actions>
+        <button mat-flat-button color="accent" [mat-dialog-close]="undefined">Anuluj!</button>
+        <button mat-flat-button color="accent" [mat-dialog-close]="categoryForm" [disabled]="categoryForm.invalid" cdkFocusInitial>Save</button>
+    </div>
+</div>

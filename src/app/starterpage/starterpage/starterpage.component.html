@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="background">
+        <div class="videoDiv" >
+            <img class="logo" src="{{eventCard.urlLogo}}">
+            <img class="logo" src="{{eventCard.urlUnderLogo}}">
+          <br>
+          <button mat-flat-button color="accent"  style="float: left" (click)="previousEvent()"> < </button>
+          <button mat-flat-button color="accent" style="float: right" (click)="nextEvent()"> > </button>
+            <video width="100%" height="100%" controls>
+              <source [src]="eventCard.urlVideo" type="video/mp4">
+              ZŁA PRZEGLADARKA ZŁA UCIEKAC DO INNEJ DO INNEJ!! GOOGLE CHROMA ODPAL NO
+            </video>
+            <img class="under-video" src="{{eventCard.urlUnderVideo}}">
+            <button mat-flat-button color="accent" class="btnNext" (click)="next()">Idziemy dalej! To dopiero poczatek!</button>
+        </div>
+    </div>
+    <img class="cap-1" src="{{eventCard.urlRightCornerImage}}">
+    <img class="heart-1" src="assets/starterpage/animatedImage/heart.png">
+    <img class="balon-1" src="{{eventCard.urlLeftCornerImage}}">
+
+    <img class="cap-2" src="{{eventCard.urlRightCornerImage}}">
+    <img class="heart-2" src="assets/starterpage/animatedImage/heart.png">
+    <img class="balon-2" src="{{eventCard.urlLeftCornerImage}}">
+
+    <img class="cap-3" src="{{eventCard.urlRightCornerImage}}">
+    <img class="heart-3" src="assets/starterpage/animatedImage/heart.png">
+    <img class="balon-3" src="{{eventCard.urlLeftCornerImage}}">
+
+    <img class="cap-4" src="{{eventCard.urlRightCornerImage}}">
+    <img class="heart-4" src="assets/starterpage/animatedImage/heart.png">
+    <img class="balon-4" src="{{eventCard.urlLeftCornerImage}}">
+    <ng-container *ngIf="animated">
+      <img class="sheldon" [@sheldon] src="assets/starterpage/animatedImage/bingBangSheldon.png">
+      <img class="breaking-bad" [@breakingBad] src="assets/starterpage/animatedImage/breakingBad.png">
+      <img class="rick-and-morty" [@rickAndMorty] src="assets/starterpage/animatedImage/rickyAndMorty.png">
+      <img class="grinch" [@grinch] src="assets/starterpage/animatedImage/grinch.png">
+      <img class="fireworks" [@fireworks] src="{{eventCard.urlCenterImage}}">
+    </ng-container>
+  <div class="center" [@bumbum]>
+        <img class="animated" src="assets/starterpage/animatedImage/bingBangTeam.png">
+        <img class="animated" src="assets/starterpage/animatedImage/domZpapieru.png">
+        <img class="animated" src="assets/starterpage/animatedImage/gambitKrolowej.png">
+        <img class="animated" src="assets/starterpage/animatedImage/kickAss.png">
+        <img class="animated" src="assets/starterpage/animatedImage/thBoys.png">
+        <img class="animated" src="assets/starterpage/animatedImage/theEndFUckingWorld.png">
+    </div>
+</div>

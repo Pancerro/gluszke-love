@@ -1,0 +1,102 @@
+<div>
+  <div class="search-box">
+    <mat-form-field>
+      <p> <input matInput type="text" [(ngModel)]="searchText"></p>
+      <mat-placeholder>Szukaj!! Martusiu Szukaj!</mat-placeholder>
+    </mat-form-field>
+  </div>
+  <div class="card-container" *ngFor="let card of cardTable | filter:searchText; let i = index">
+    <mat-card class="my-card" [style.color]="card.category.textColor" [style.backgroundColor]="card.category.color" *ngIf="cardView[i]  else loading">
+      <mat-card-header>
+        <mat-card-title>{{card?.title}}
+          <button (click)="delete(card?.id)" [style.color]="card.category.textColor" [style.backgroundColor]="card.category.color" class="trash"><mat-icon>delete</mat-icon></button>
+          <button (click)="editCard(card, i)" [style.color]="card.category.textColor" [style.backgroundColor]="card.category.color" class="edit"><mat-icon>edit</mat-icon></button>
+        </mat-card-title>
+        <mat-card-subtitle [style.color]="card.category.textColor" [style.backgroundColor]="card.category.color">{{card?.category?.nameCategory}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Ocena Martusi <star-rating value="{{card?.ratingMarta}}" totalstars="10" checkedcolor="{{card.category.colorStar}}" uncheckedcolor="{{card.category.colorStarBackground}}" size="24px" [readonly]="email!=='martag-1997@wp.pl'" (rate)="onRateMarta($event, card?.id)"></star-rating> {{card?.ratingMarta}}/10
+        </p>
+        <p>
+          Ocena Adriana <star-rating value="{{card?.ratingAdrian}}" totalstars="10" checkedcolor="{{card.category.colorStar}}" uncheckedcolor="{{card.category.colorStarBackground}}" size="24px" [readonly]="email==='martag-1997@wp.pl'" (rate)="onRateAdrian($event, card?.id)"></star-rating> {{card?.ratingAdrian}}/10
+        </p>
+        <p>
+          {{card?.type}}
+        </p>
+        <div>
+          <form #addImageForm="ngForm">
+            <div ngModelGoroup="add">
+              <mat-form-field>
+                <mat-label [style.color]="card.category.textColor" [style.backgroundColor]="card.category.color">Dodaj obrazek do wspominania!</mat-label>
+                <mat-select [style.color]="card.category.textColor" [style.backgroundColor]="card.category.color" required name="url" ngModel>
+                  <mat-option value="">Brak :(</mat-option>
+                  <mat-option *ngFor="let url of allCard" value="{{url.url}}"> <span style="font-size: small">{{url?.title}}</span>
+                    <ng-container *ngIf="url?.url !==''">
+                      <img *ngIf="url?.url.toString().split('.')[5].split('?')[0]!=='mp4'" class="preview" src="{{url?.url}}" alt="{{url?.title}}">
+                      <video *ngIf="url?.url.toString().split('.')[5].split('?')[0]==='mp4'" class="preview">
+                        <source src="{{url?.url}}"/>
+                        Browser not supported
+                      </video>
+                    </ng-container>
+                  </mat-option>
+                </mat-select>
+                <button type="submit" [disabled]="addImageForm.invalid"  mat-button matSuffix mat-raised-button color="accent" (click)="addImageToRating(i,addImageForm)">Dodaj!</button>
+              </mat-form-field>
+            </div>
+          </form>
+        </div>
+
+       <div (click)="previewCard(card?.imageUrl)" class="memento-container" *ngFor="let url of card?.imageUrl">
+          <div *ngIf="url.toString()!=='1'">
+            <img *ngIf="url?.toString().split('.')[5].split('?')[0]!=='mp4'" class="memento" src="{{url}}" >
+            <video *ngIf="url?.toString().split('.')[5].split('?')[0]==='mp4'" class="memento">
+              <source src="{{url}}"/>
+              Browser not supported
+            </video>
+          </div>
+        </div>
+        <div>
+          <button [style.color]="card.category.textColor" [style.backgroundColor]="card.category.color" mat-button color="primary" class="btn-comment" (click)="seeComment[i] =!seeComment[i]"><span *ngIf="seeComment[i]">Ukryj Komentarze</span><span *ngIf="!seeComment[i]">Pokaz Komentarze</span></button>
+        </div>
+        <div *ngIf="seeComment[i]">
+          <div class="comment-box" *ngFor="let comment of card?.comment">
+            <div *ngIf="comment?.email !=''">
+              <p><span style="float: left">{{comment?.email}}:</span> {{comment?.comment}}</p>
+              <mat-divider></mat-divider>
+            </div>
+          </div>
+
+          <form #commentForm="ngForm"  autocomplete="off">
+            <div ngModelGroup="comment">
+              <div>
+                <mat-form-field [style.color]="card.category.textColor" [style.backgroundColor]="card.category.color">
+                  <input matInput type="text" required name="comment" ngModel>
+                  <mat-placeholder [style.color]="card.category.textColor" [style.backgroundColor]="card.category.color">Komentarz...</mat-placeholder>
+                  <mat-error [style.color]="card.category.textColor" [style.backgroundColor]="card.category.color">Pusty komentarz?! bez zartow!</mat-error>
+                  <button  [disabled]="commentForm.invalid" mat-button matSuffix mat-raised-button color="accent" (click)="sendComment(i, commentForm)"><mat-icon>send</mat-icon></button>
+                </mat-form-field>
+              </div>
+            </div>
+          </form>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div *ngIf="(cardTable | filter:searchText) as result">
+    <p class="alert alert-danger" *ngIf="result.length==0 && cardTable.length>0"> Nic nie znaleziono... No trudno i tak Cie kocham</p>
+  </div>
+</div>
+<ng-template #loading>
+  <mat-card class="my-card">
+    <mat-card-header>
+      <mat-card-title></mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-spinner [color]="'accent'"></mat-spinner>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+  </mat-card>
+</ng-template>

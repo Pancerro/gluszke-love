@@ -1,0 +1,13 @@
+.container {
+  text-align: center;
+  color: white;
+}
+.title {
+  font-size: large;
+}
+
+.btn-return {
+  font-size: small;
+  color: white;
+
+}

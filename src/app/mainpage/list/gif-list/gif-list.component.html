@@ -1,0 +1,54 @@
+<div>
+  <div class="search-box">
+    <mat-form-field>
+      <p> <input matInput type="text" [(ngModel)]="searchText"></p>
+      <mat-placeholder>Szukaj!! Martusiu Szukaj!</mat-placeholder>
+    </mat-form-field>
+  </div>
+  <div class="card-container" *ngFor="let card of cardTable | filter:searchText; let i = index">
+    <mat-card class="my-card" [style.color]="card.category.textColor" [style.backgroundColor]="card.category.color" *ngIf="cardView[i]  else loading">
+      <mat-card-header>
+        <mat-card-title>{{card?.title}}
+          <button (click)="addToFavorite(card)" [style.color]="card.category.textColor" [style.backgroundColor]="card.category.color" class="empty-favorite" *ngIf="!card?.favorite"><mat-icon>favorite_border</mat-icon></button>
+          <button (click)="addToFavorite(card)" [style.color]="card.category.textColor" [style.backgroundColor]="card.category.color" class="favorite" *ngIf="card?.favorite"><mat-icon>favorite</mat-icon></button>
+          <button (click)="delete(card?.id)" [style.color]="card.category.textColor" [style.backgroundColor]="card.category.color" class="trash"><mat-icon>delete</mat-icon></button>
+        </mat-card-title>
+        <mat-card-subtitle>{{card?.title}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <img (click)="edit(card,i)" mat-card-image src="{{card?.url}}" alt="{{card?.title}}">
+      <mat-card-content>
+        <p>
+          {{card?.description}}
+        </p>
+        <p>
+          {{card?.category.nameCategory}}
+        </p>
+        <p *ngIf="!card?.category.nameCategory"> Brak Kategorii a to przykre
+        </p>
+        <mat-divider></mat-divider>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="accent" (click)="delete(card?.id)">DELETE </button>
+        <button mat-raised-button color="accent" (click)="addToFavorite(card)">LIKE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div *ngIf="(cardTable | filter:searchText) as result">
+    <p class="alert alert-danger" *ngIf="result.length==0 && cardTable.length>0"> Nic nie znaleziono... No trudno i tak Cie kocham</p>
+  </div>
+</div>
+<ng-template #loading>
+  <mat-card class="my-card">
+    <mat-card-header>
+      <mat-card-title></mat-card-title>
+      <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-spinner [color]="'accent'"></mat-spinner>
+    </mat-card-content>
+    <mat-card-actions>
+
+    </mat-card-actions>
+  </mat-card>
+</ng-template>

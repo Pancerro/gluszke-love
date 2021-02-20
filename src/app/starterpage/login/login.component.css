@@ -1,0 +1,17 @@
+.center {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.my-card {
+  max-width: 400px;
+}
+
+.card-container {
+  width: 400px;
+  max-width: 100%;
+  margin: 0 25px 25px 0;
+}

@@ -1,0 +1,9 @@
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+mat-progress-bar .mat-progress-bar-buffer {
+    background: hotpink;
+}

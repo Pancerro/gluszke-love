@@ -1,0 +1,15 @@
+<div>
+    <ng-container *ngIf="data | async as progress">
+        <h1 mat-dialog-title *ngIf="progress!=100">Się wgrywa, trzeba poczekac Martusio :(</h1>
+        <h1 mat-dialog-title *ngIf="progress==100">Ha! wgralo sie, mamy to</h1>
+
+        <div mat-dialog-content>
+            <mat-progress-bar [style.height]="200" [value]="progress" mode="determinate">
+            </mat-progress-bar>
+        </div>
+        <div class="btn" mat-dialog-actions>
+            <button *ngIf="progress!=100" mat-flat-button color="accent" [mat-dialog-close]="true">No cierpliwości mojej milości</button>
+            <button *ngIf="progress==100" mat-flat-button color="accent" [mat-dialog-close]="true">Widzisz! Udało sie! </button>
+        </div>
+    </ng-container>
+</div>

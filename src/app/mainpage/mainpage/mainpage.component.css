@@ -1,0 +1,56 @@
+.background {
+    background-color: pink;
+}
+
+.container {
+    margin-top: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.sideNavRight {
+    width: auto+10px;
+    text-align: center;
+}
+
+.sidenav {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.sideNavRight button {
+    width: 100%;
+}
+
+.trashSide {
+    border: none;
+    width: 10%;
+}
+
+.mat-list-item {
+    height: auto !important;
+}
+
+.title {
+    width: 90%;
+}
+
+.sideNavButton {
+    position: -webkit-sticky;
+    position: fixed;
+    bottom: 15px;
+    right: 20px;
+    z-index: 999;
+}
+
+:host .mat-flat-button {
+    border-radius: 0px !important;
+}
+
+.mat-spinner {
+    margin: 0 auto;
+}

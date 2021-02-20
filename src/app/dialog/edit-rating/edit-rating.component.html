@@ -1,0 +1,39 @@
+<div>
+  <h1 mat-dialog-title>Dodasz nowa karte z ocena? ? </h1>
+  <div mat-dialog-content>
+    <form #ratingForm="ngForm">
+      <div ngModelGroup="rating">
+        <mat-form-field>
+          <input matInput type="text" required name="title" [(ngModel)]="data.title">
+          <mat-placeholder>Tytyl dziela!</mat-placeholder>
+          <mat-error>no jakis tytul musi byc...</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label *ngIf="data.type">{{data.type}}</mat-label>
+          <mat-label *ngIf="!data.type">Nie wybrany typ, nie wybrany wcale</mat-label>
+          <mat-select name="type" [(ngModel)]="data.type">
+            <mat-option value="none">Brak typu KATASTROFA</mat-option>
+            <mat-option value="Film">Film</mat-option>
+            <mat-option value="Serial">Serial</mat-option>
+            <mat-option value="Ksiazka">Ksiazka</mat-option>
+            <mat-option value="Wycieczka">Wycieczka</mat-option>
+            <mat-option value="Wspolna przygoda">Wspolna przygoda</mat-option>
+            <mat-option value="Inne">Inne</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label *ngIf="data.category.nameCategory">{{data.category.nameCategory}}</mat-label>
+          <mat-label *ngIf="!data.category.nameCategory">Nie wybrana kategoria, nie wybrana wcale</mat-label>
+          <mat-select name="category" [(ngModel)]="data.category">
+            <mat-option value="none">Brak kategorii aaa</mat-option>
+            <mat-option *ngFor="let category of categoryTable" [style.backgroundColor]="category.color" [style.color]="category.textColor" [value]="category">{{category.nameCategory}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </form>
+  </div>
+  <div class="btn" mat-dialog-actions>
+    <button mat-flat-button color="accent" [mat-dialog-close]="undefined">Anuluj!</button>
+    <button mat-flat-button color="accent" [mat-dialog-close]="ratingForm" [disabled]="ratingForm.invalid" cdkFocusInitial>Save</button>
+  </div>
+</div>

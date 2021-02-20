@@ -1,0 +1,37 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.memento-container {
+  display: inline-flex;
+  justify-items: center;
+}
+.memento {
+  width: 30px;
+  height: 30px;
+}
+.bigger-img {
+  height: 250px;
+  width: 300px;
+}
+
+@media only screen and (max-width: 450px) {
+  .bigger-img {
+    height: 250px;
+    width: 250px;
+  }
+}
+.container {
+  position: relative;
+}
+.btn-next {
+  top: 40%;
+  right: 2%;
+  position: absolute;
+}
+.btn-previous {
+  top: 40%;
+  left: 2%;
+  position: absolute;
+}

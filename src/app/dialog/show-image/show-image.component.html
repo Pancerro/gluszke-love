@@ -1,0 +1,26 @@
+<div>
+  <h1 mat-dialog-title>Powiekszamy!!</h1>
+  <div mat-dialog-content>
+    <div class="container" (click)="bigger(url)" *ngIf="url.toString()!=='1'">
+      <img class="bigger-img" *ngIf="url?.toString().split('.')[5].split('?')[0]!=='mp4'"  src="{{url}}" >
+      <video class="bigger-img" *ngIf="url?.toString().split('.')[5].split('?')[0]==='mp4'" controls>
+        <source src="{{url}}"/>
+        Browser not supported
+      </video>
+      <button class="btn-previous" mat-flat-button color="accent" (click)="previous()"><</button>
+      <button class="btn-next" mat-flat-button color="accent" (click)="next()">></button>
+    </div>
+    <div class="memento-container" *ngFor="let url of data">
+      <div (click)="bigger(url)" *ngIf="url.toString()!=='1'">
+        <img *ngIf="url?.toString().split('.')[5].split('?')[0]!=='mp4'" class="memento" src="{{url}}" >
+        <video *ngIf="url?.toString().split('.')[5].split('?')[0]==='mp4'" controls class="memento">
+          <source src="{{url}}"/>
+          Browser not supported
+        </video>
+      </div>
+    </div>
+  </div>
+  <div class="btn" mat-dialog-actions>
+    <button mat-flat-button color="accent" [mat-dialog-close]="undefined">Zamknij!</button>
+  </div>
+</div>

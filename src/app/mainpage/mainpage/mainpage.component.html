@@ -1,0 +1,63 @@
+<div class="background">
+    <mat-sidenav-container class="sidenav background">
+        <mat-sidenav #sidenavright class="sideNavRight background" position="end">
+            <div>
+                <button mat-flat-button color="accent" *ngIf="seeCard[0]" (click)="saveImage()">Dodasz nową karte? no dodaj no!</button>
+                <button mat-flat-button color="accent" *ngIf="seeCard[1]" (click)="saveVideo()">Dodasz nowe video?? no dodaj no!</button>
+                <button mat-flat-button color="accent" *ngIf="seeCard[2]" (click)="saveGif()">Dodasz nowego gifa?? no dodaj no!</button>
+                <button mat-flat-button color="accent" *ngIf="seeCard[3]" (click)="saveRating()">Dodasz nowego rating!?? no dodaj no!</button>
+              <br>
+                <button mat-flat-button color="accent" *ngIf="!viewFavoriteBooleanImage && seeCard[0]" (click)="viewFavoriteImage()">Pokaz tylko te z serduszkiem no!</button>
+                <button mat-flat-button color="accent" *ngIf="viewFavoriteBooleanImage && seeCard[0]" (click)="viewAllImage()">Pokaz mi jednak wszystkie no!</button>
+                <button mat-flat-button color="accent" *ngIf="!viewFavoriteBooleanVideo && seeCard[1]" (click)="viewFavoriteVideo()">Pokaz tylko te z serduszkiem no!</button>
+                <button mat-flat-button color="accent" *ngIf="viewFavoriteBooleanVideo && seeCard[1]" (click)="viewAllVideo()">Pokaz mi jednak wszystkie no!</button>
+                <button mat-flat-button color="accent" *ngIf="!viewFavoriteBooleanGif && seeCard[2]" (click)="viewFavoriteGif()">Pokaz tylko te z serduszkiem GIFY no!</button>
+                <button mat-flat-button color="accent" *ngIf="viewFavoriteBooleanGif && seeCard[2]" (click)="viewAllGif()">Pokaz mi jednak wszystkie GIFY no!</button>
+                <button mat-flat-button color="accent" *ngIf="!sortRatingByMarta && seeCard[3]" (click)="sortByRatingASCMarta()">Posortuj od najwiekszego ratingu Marty!!</button>
+                <button mat-flat-button color="accent" *ngIf="sortRatingByMarta && seeCard[3]" (click)="sortByRatingDESCMarta()">Posortuj od najmniejszego ratingu Marty!!</button>
+                <button mat-flat-button color="accent" *ngIf="!sortRatingByAdriana && seeCard[3]" (click)="sortByRatingASCAdriana()">Posortuj od najwiekszego ratingu Adriana!!</button>
+                <button mat-flat-button color="accent" *ngIf="sortRatingByAdriana && seeCard[3]" (click)="sortByRatingDESCAdriana()">Posortuj od najmniejszego ratingu Adriana!!</button>
+                <button mat-flat-button color="accent" *ngIf="seeCard[3]" (click)="clearSort()">Wyczysc sortowanie aaa!!</button>
+              <br>
+                <button mat-flat-button color="accent" *ngIf="!seeCard[0]" (click)="viewCard()">Pokaz mi jednak te karty co?!</button>
+                <button mat-flat-button color="accent" *ngIf="!seeCard[1]" (click)="viewVideo()">Pokaz mi jednak wyznania milosne od Adrisia!</button>
+                <button mat-flat-button color="accent" *ngIf="!seeCard[2]" (click)="viewGif()">Pokaz mi GIFY!! co?!</button>
+                <button mat-flat-button color="accent" *ngIf="!seeCard[3]" (click)="viewRating()">Pokaz mi oceny no!! co?!</button>
+                <button mat-flat-button color="accent" (click)="goToGallery()">GALERIA MALEGO DRISIA</button>
+
+              <br>
+                <button mat-flat-button color="accent" (click)="addCategory()">Dodamy kategorie co!</button>
+                <h5> Twoje Dodane Kategorie! Martusiu </h5>
+                <mat-list role="list">
+                    <mat-list-item class="list" role="listitem" *ngFor="let category of categoryTable; let i = index" [style.color]="category.textColor" [style.backgroundColor]="category.color">
+                        <ng-container *ngIf="categoryView[i]  else loading">
+                            <p class="title">{{category.nameCategory}}</p>
+                            <button (click)="deleteCategory(category.idCategory)" [style.color]="category.textColor" [style.backgroundColor]="category.color" class="trashSide"><mat-icon>delete</mat-icon></button>
+                            <button (click)="editCategory(category, i)" [style.color]="category.textColor" [style.backgroundColor]="category.color" class="trashSide"><mat-icon>edit</mat-icon></button>
+                        </ng-container>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div>
+                <button mat-fab color="accent" class="sideNavButton" (click)="sidenavright.toggle() && playAudio('assets/openSideNav.mp3')"><mat-icon>add</mat-icon></button>
+                <div class="container" *ngIf="seeCard[0]">
+                    <app-image-list></app-image-list>
+                </div>
+                <div class="container" *ngIf="seeCard[1]">
+                    <app-video-list></app-video-list>
+                </div>
+                <div class="container" *ngIf="seeCard[2]">
+                    <app-gif-list></app-gif-list>
+                </div>
+                <div class="container" *ngIf="seeCard[3]">
+                    <app-rating></app-rating>
+                </div>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
+<ng-template #loading>
+    <mat-spinner [color]="'accent'" [diameter]="50"></mat-spinner>
+</ng-template>
