@@ -185,6 +185,24 @@ export class StarterpageComponent implements OnInit {
       urlRightCornerImage: 'assets/starterpage/image/hearthValentine.png',
       urlLeftCornerImage: 'assets/starterpage/image/bearValentine.png'
     },
+    {
+      urlLogo: 'assets/starterpage/text/valentineLogo.png',
+      urlUnderLogo: 'assets/starterpage/text/valentineUnderLogo.png',
+      urlVideo: 'assets/valentine2.mp4',
+      urlUnderVideo: 'assets/starterpage/text/valentineUnderVideo.png',
+      urlCenterImage: 'assets/starterpage/animatedImage/valentine.jpg',
+      urlRightCornerImage: 'assets/starterpage/image/hearthValentine.png',
+      urlLeftCornerImage: 'assets/starterpage/image/bearValentine.png'
+    },
+    {
+      urlLogo: 'assets/starterpage/text/easterLogo.png',
+      urlUnderLogo: 'assets/starterpage/text/easterUnderLogo.png',
+      urlVideo: 'assets/easter.mp4',
+      urlUnderVideo: 'assets/starterpage/text/easterUnderVideo.png',
+      urlCenterImage: 'assets/starterpage/image/easterChicken.png',
+      urlRightCornerImage: 'assets/starterpage/image/easterEggs.png',
+      urlLeftCornerImage: 'assets/starterpage/image/easterRabbit.png'
+    },
     ];
   public eventCard: EventCard;
   public animated = true;
